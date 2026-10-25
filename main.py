@@ -1,0 +1,17 @@
+"""
+Main entrypoint for Toxico AI FastAPI server.
+Exposes the FastAPI instance 'app' for default entrypoint detection (e.g. main:app).
+"""
+import os
+import sys
+
+# Ensure workspace root is in sys.path
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
+from backend.app.main import app
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
